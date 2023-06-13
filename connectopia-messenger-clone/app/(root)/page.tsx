@@ -1,7 +1,7 @@
 import Image from "next/image";
 import AuthForm from "./components/AuthForm";
 
-export default function Home() {
+const Home = () => {
   return (
     <div
       className="
@@ -33,10 +33,15 @@ export default function Home() {
             tracking-tight  
         "
         >
-          Login to your account
+          Log in to your account
+          {/* {variant === "LOGIN"
+            ? "Log in to your account"
+            : "Create your account"} */}
         </h2>
       </div>
       <AuthForm />
     </div>
   );
-}
+};
+
+export default Home;
