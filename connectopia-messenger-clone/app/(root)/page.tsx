@@ -23,21 +23,6 @@ const Home = () => {
           src="/images/logo.png"
           alt="Logo"
         />
-        <h2
-          className="
-            text-center
-            text-3xl
-            font-bold
-            text-gray-900
-            mt-6
-            tracking-tight  
-        "
-        >
-          Log in to your account
-          {/* {variant === "LOGIN"
-            ? "Log in to your account"
-            : "Create your account"} */}
-        </h2>
       </div>
       <AuthForm />
     </div>

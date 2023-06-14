@@ -46,6 +46,23 @@ const AuthForm = () => {
 
   return (
     <>
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <h2
+          className="
+        text-center
+        text-3xl
+        font-bold
+        text-gray-900
+        mt-6
+        tracking-tight  
+    "
+        >
+          {variant === "LOGIN"
+            ? "Log in to your account"
+            : "Create your account"}
+        </h2>
+      </div>
+
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div
           className="
