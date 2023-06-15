@@ -6,6 +6,9 @@ import { useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from "react-icons/bs";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 type variant = "LOGIN" | "REGISTER";
 const AuthForm = () => {
@@ -35,13 +38,46 @@ const AuthForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     if (variant === "REGISTER") {
+      axios
+        .post("/api/register", data)
+        .then(() => {
+          signIn("credentials", { ...data, redirect: false });
+        })
+        .catch(() => {
+          toast.error("Something went wrong");
+        })
+        .finally(() => setIsLoading(false));
     }
     if (variant === "LOGIN") {
+      signIn("credentials", { ...data, redirect: false })
+        .then((res) => {
+          if (res?.error) {
+            toast.error("Invalid Credentials");
+          }
+
+          if (res?.ok && !res?.error) {
+            toast.success("successful");
+          }
+        })
+        .finally(() => setIsLoading(false));
     }
   };
 
   const socialAction = (action: string) => {
     setIsLoading(true);
+
+    signIn(action, { redirect: false })
+      .then((res) => {
+        console.log(res);
+        if (res?.error) {
+          toast.error("Invalid Credentials");
+        }
+
+        if (res?.ok && !res?.error) {
+          toast.success("successful");
+        }
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -132,7 +168,7 @@ const AuthForm = () => {
             <div className="mt-6 flex gap-2">
               <AuthSocialButton
                 icon={BsGithub}
-                onClick={() => socialAction("github")}
+                onClick={() => signIn("github")}
               />
               <AuthSocialButton
                 icon={BsGoogle}
