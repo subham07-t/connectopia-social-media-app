@@ -7,8 +7,10 @@ import clsx from "clsx";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConversationBox from "./ConversationBox";
+import GroupChatModal from "@/app/components/modals/GroupChatModal";
+import { find, uniq } from "lodash";
 
 interface ConversationListProps {
   initialItems: FullConversationType[];
@@ -18,16 +20,65 @@ interface ConversationListProps {
 
 const ConversationList: React.FC<ConversationListProps> = ({
   initialItems,
+  users,
 }) => {
   const [items, setItems] = useState(initialItems);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const router = useRouter();
   const session = useSession();
+
   const { conversationId, isOpen } = useConversation();
+
+  useEffect(() => {
+    // if (!pusherKey) {
+    //   return;
+    // }
+
+    // pusherClient.subscribe(pusherKey);
+
+    const updateHandler = (conversation: FullConversationType) => {
+      setItems((current) =>
+        current.map((currentConversation) => {
+          if (currentConversation.id === conversation.id) {
+            return {
+              ...currentConversation,
+              messages: conversation.messages,
+            };
+          }
+
+          return currentConversation;
+        })
+      );
+    };
+    const newHandler = (conversation: FullConversationType) => {
+      setItems((current) => {
+        if (find(current, { id: conversation.id })) {
+          return current;
+        }
+
+        return [conversation, ...current];
+      });
+    };
+
+    const removeHandler = (conversation: FullConversationType) => {
+      setItems((current) => {
+        return [...current.filter((convo) => convo.id !== conversation.id)];
+      });
+    };
+
+    // pusherClient.bind('conversation:update', updateHandler)
+    // pusherClient.bind('conversation:new', newHandler)
+    // pusherClient.bind('conversation:remove', removeHandler)
+  }, [router]);
 
   return (
     <>
+      <GroupChatModal
+        users={users}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       <aside
         className={clsx(
           `
