@@ -7,8 +7,9 @@ import { format } from "date-fns";
 import clsx from "clsx";
 import AvatarGroup from "@/app/components/AvatarGroup";
 import Avatar from "@/app/components/Avatar";
-import useOtherUser from "@/app/hooks/useOtherUser";
+
 import { useCallback, useMemo } from "react";
+import useOtherUser from "@/app/hooks/useOtherUser";
 
 interface ConversationBoxProps {
   data: FullConversationType;
