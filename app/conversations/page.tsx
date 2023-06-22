@@ -1,8 +1,8 @@
 "use client";
 import clsx from "clsx";
-import useConversation from "../hooks/useConversation";
 import EmptyState from "../components/EmptyState";
-const page = () => {
+import useConversation from "../hooks/useConversation";
+const Conversations = () => {
   const { isOpen } = useConversation();
   return (
     <div
@@ -13,4 +13,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Conversations;
