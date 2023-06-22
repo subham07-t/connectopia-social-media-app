@@ -1,9 +1,7 @@
 import AuthContext from "./context/AuthContext";
 import ToastContext from "./context/ToastContext";
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import ActiveStatus from "./components/ActiveStatus";
 
 export const metadata = {
   title: "connectopia-messenger-clone",
@@ -17,9 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <AuthContext>
           <ToastContext />
+          <ActiveStatus />
           {children}
         </AuthContext>
       </body>

@@ -7,10 +7,11 @@ import clsx from "clsx";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ConversationBox from "./ConversationBox";
 import GroupChatModal from "@/app/components/modals/GroupChatModal";
 import { find, uniq } from "lodash";
+import { pusherClient } from "@/app/lib/pusher";
 
 interface ConversationListProps {
   initialItems: FullConversationType[];
@@ -30,12 +31,16 @@ const ConversationList: React.FC<ConversationListProps> = ({
 
   const { conversationId, isOpen } = useConversation();
 
-  useEffect(() => {
-    // if (!pusherKey) {
-    //   return;
-    // }
+  const pusherKey = useMemo(() => {
+    return session.data?.user?.email;
+  }, [session.data?.user?.email]);
 
-    // pusherClient.subscribe(pusherKey);
+  useEffect(() => {
+    if (!pusherKey) {
+      return;
+    }
+
+    pusherClient.subscribe(pusherKey);
 
     const updateHandler = (conversation: FullConversationType) => {
       setItems((current) =>
@@ -67,9 +72,9 @@ const ConversationList: React.FC<ConversationListProps> = ({
       });
     };
 
-    // pusherClient.bind('conversation:update', updateHandler)
-    // pusherClient.bind('conversation:new', newHandler)
-    // pusherClient.bind('conversation:remove', removeHandler)
+    pusherClient.bind("conversation:update", updateHandler);
+    pusherClient.bind("conversation:new", newHandler);
+    pusherClient.bind("conversation:remove", removeHandler);
   }, [router]);
 
   return (
