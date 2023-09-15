@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
+  provider     = "mongodb"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
@@ -34,8 +35,8 @@ model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
   userId            String  @db.ObjectId
   type              String
-  Provider          String
-  ProviderAccountId String
+  provider          String
+  providerAccountId String
   refresh_token     String? @db.String
   access_token      String? @db.String
   expires_at        Int?
@@ -46,7 +47,7 @@ model Account {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([Provider, ProviderAccountId])
+  @@unique([provider, providerAccountId])
 }
 
 model Conversation {
