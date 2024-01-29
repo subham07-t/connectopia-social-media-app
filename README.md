@@ -1,6 +1,6 @@
 
 # Welcome to Connectopia messenger app 👋
-![Screenshot 2023-11-06 220329](https://github.com/subham07-t/campus-keeper-UMS-app/assets/82716446/c152a814-4c66-463e-84d1-d200894dbf7e)
+![Screenshot 2023-11-06 220329](https://github.com/subham07-t/connectopia-social-media-app/assets/82716446/24179125-98a9-4d24-b1e0-2cd192a994fa)
 
 Introducing our real-time messaging and chat application, designed for seamless communication. Our app offers features like message notifications, sleek design with Tailwind, animations, full responsiveness, multiple authentication options, file/image uploads, client form validation, error handling, read receipts, user status tracking, group chats, message attachments, user profile customization, and more.
 
