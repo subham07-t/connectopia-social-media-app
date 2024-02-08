@@ -76,7 +76,7 @@ Start the server
 - [x] Implementing real-time data update for instant messaging using **Pusher**.
 - [x] Enable users to chat individually or in groups effectively, while keeping track of their online status and message read receipts for better communication.
 - [x] Effortlessly handle file uploads using **Cloudinary** CDN, and easily share attachments within messages.
-- [x] Deliver comprehensive user profiles and chat room management for an exceptional chat experience
+- [x] Deliver comprehensive user profiles and chat room management for an exceptional chat experience.
   
 ## Author
 
