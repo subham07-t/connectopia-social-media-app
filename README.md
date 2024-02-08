@@ -2,9 +2,9 @@
 # Welcome to Connectopia messenger app 👋
 ![Screenshot 2023-11-06 220329](https://github.com/subham07-t/connectopia-social-media-app/assets/82716446/24179125-98a9-4d24-b1e0-2cd192a994fa)
 
-Introducing our real-time messaging and chat application, designed for seamless communication. Our app offers features like message notifications, sleek design with Tailwind, animations, full responsiveness, multiple authentication options, file/image uploads, client form validation, error handling, read receipts, user status tracking, group chats, message attachments, user profile customization, and more.
+Introducing our real-time messaging and chat application, designed for seamless communication. 
 
-What sets us apart is the ability to directly access the database from server React components, eliminating the need for a separate API layer. We've also streamlined chat room and channel management, making it easy to organize your conversations.
+Our app offers features like message notifications, sleek design with Tailwind, full responsiveness, multiple authentication options, file/image uploads, read receipts, user status tracking, group chats, message attachments, user profile customization, and more.
 
 Experience a robust and feature-rich messaging platform with us.
 
@@ -60,38 +60,28 @@ Start the server
 ```
 
 
-## Tools used
+## Tech Stack
 
-- Next 13
-- TypeScript
-- NextAuth
-- zustand
-- react-hook-form
-- Cloudinary
-- Node JS
-- Prisma
-- MongoDB
-- Pusher
+- **Framework:** [﻿Next.js](https://nextjs.org/)
+- **Styling:** [﻿Tailwind CSS](https://tailwindcss.com/)
+- **State Management:** [zustand](https://zustand-demo.pmnd.rs/)
+- **Form Handle:** [﻿React Hook Form](https://react-hook-form.com/) 
+- **File Uploads:** [Cloudinary](https://cloudinary.com/)
+- **ORM:** [Prisma](https://www.prisma.io/)
+- **Database:** [MongoDB](https://www.mongodb.com/)
 
 ## Features
 
-- Enabling real-time messaging with Pusher, reinforced by multi-tier authentication through Google and GitHub OAuth.
-- Seamlessly manage file uploads with Cloudinary CDN, including the sharing of attachments within messages.
-- Empower users with robust group and one-on-one chat capabilities.
-- Monitor user online/offline status and message read receipts for effective communication.
--   Deliver comprehensive user profiles and chat room management for an exceptional chat experience
+- [x] Authentication with NextAuth , enhancing security with Google and GitHub OAuth authentication layers.
+- [x] Implementing real-time data update for instant messaging using **Pusher**.
+- [x] Enable users to chat individually or in groups effectively, while keeping track of their online status and message read receipts for better communication.
+- [x] Effortlessly handle file uploads using **Cloudinary** CDN, and easily share attachments within messages.
+- [x] Deliver comprehensive user profiles and chat room management for an exceptional chat experience
   
-## Lessons Learned
-
-- How to use the NextAuth
-- How to use react-hook-form and cloudinary
-- How to use the Pusher and zustand  
-
-
 ## Author
 
-👤 ** Subham haldar  **
+👤 **Subham haldar**
 
-* Github: [@Subham07-t   ](https://github.com/Subham07-t   )
+* Github: [@Subham07-t](https://github.com/Subham07-t   )
 * LinkedIn: https://linkedin.com/in/subham-haldar
 
